@@ -8,4 +8,22 @@ how to set the proper width and align these buttons well
 using Grid. I have to look up how to align items using Grid. 
 And give it a proper width that I want it to have.
 
-☐ Look up how to align items using Grid
+✔ Look up how to align items using Grid @done(20-06-30 12:33)
+
+☐ How do I give each grid item certain width and height?
+    grid-template-columns & rows
+
+☐ How do I make a gap in each grid items?
+    column-gap, row-gap
+
+☐ Change the styles of calculator
+    ☐ Change the background color of each items
+        ☐ numbers = #F1F3F4, hover: #e8eaeb, focus: #bdc1c6 
+        ☐ Equal = #4285F4, hover: #4d8bf1, focus: #185abc
+        ☐ all operators except numbers = #DFE1E5, hover: #d7d9dd, focus: #9aa0a6
+
+    Trouble shooting: When the button is focused, why outline is blue?
+
+    ☐ Change the font size of grid items
+
+    ☐ Change the display border round

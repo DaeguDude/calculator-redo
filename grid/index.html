@@ -6,39 +6,224 @@
   <title>Document</title>
 </head>
 <style>
+  #container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   #grid-container {
     display: grid;
     border: 1px solid pink;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    /* Define the columns and rows of the grid with the specific size. */
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 150px 100px 100px 100px 100px 100px;
+
+    /* Make a gap between grid items. You can think of this as setting the
+    width of grid line, thus makes a gap between the items */
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+
+    grid-template-areas:
+      "display display display display"
+      "top-row top-row top-row top-row"
+      "main main main operators"
+      "main main main operators"
+      "main main main operators"
+      "main main main operators"
   }
+
+  .display {
+
+  }
+
+  /* number, decimal */
+  .item-b {
+    grid-area: main;
+    background: #f1f3f4;
+  }
+
+  .item-b:hover {
+    background: #e8eaeb;
+  }
+
+  .item-b:active {
+    border-color: #bdc1c6;
+  }
+
+  /* (,), DEL, AC */
+  .item-c {
+    grid-area: operators;
+    background: #dfe1e5;
+  }
+
+  /* +, -, x, ÷ */
+  .item-d {
+    grid-area: top-row;
+    background: #dfe1e5
+  }
+
+  .item-c:hover,
+  .item-d:hover {
+    background: #d7d9dd;
+  }
+
+  
+
+  
 
   #grid-container > div {
     border: 1px solid black;
   }
+
+  #display {
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  #zero {
+    grid-row: 6;
+    grid-column: 1;
+  }
+
+  #one {
+    grid-row: 5;
+    grid-column: 1;
+  }
+  
+  #two {
+    grid-row: 5;
+    grid-column: 2; 
+  }
+
+  #three {
+    grid-row: 5;
+    grid-column: 3; 
+  }
+
+  #four {
+    grid-row: 4;
+    grid-column: 1; 
+  }
+
+  #five {
+    grid-row: 4;
+    grid-column: 2; 
+  }
+
+  #six {
+    grid-row: 4;
+    grid-column: 3; 
+  }
+
+  #seven {
+    grid-row: 3;
+    grid-column: 1; 
+  }
+
+  #eight {
+    grid-row: 3;
+    grid-column: 2; 
+  }
+
+  #nine {
+    grid-row: 3;
+    grid-column: 3; 
+  }
+
+  #add {
+    grid-row: 6;
+    grid-column: 4; 
+  }
+
+  #subtract {
+    grid-row: 5;
+    grid-column: 4; 
+  }
+
+  #multiply {
+    grid-row: 4;
+    grid-column: 4; 
+  }
+
+  #divide {
+    grid-row: 3;
+    grid-column: 4; 
+  }
+
+  #decimal {
+    grid-row: 6;
+    grid-column: 2; 
+  }
+
+  #equal {
+    grid-row: 6;
+    grid-column: 3; 
+    background: #4285f4;
+  }
+
+  #equal:hover {
+    background: #4d8bf1;
+  }
+
+  #equal:focus {
+    border-color: #185abc;
+  }
+
+  #clear {
+    grid-row: 2;
+    grid-column: 4; 
+  }
+
+  #delete {
+    grid-row: 2;
+    grid-column: 3; 
+  }
+
+  #openingParenthesis {
+    grid-row: 2;
+    grid-column: 1; 
+  }
+
+  #closingParenthesis {
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+
+
 </style>
 <body>
-  <div id="grid-container">
-    <div id="zero" class="number">0</div>
-    <div id="one" class="number">1</div>
-    <div id="two" class="number">2</div>
-    <div id="three" class="number">3</div>
-    <div id="four" class="number">4</div>
-    <div id="five" class="number">5</div>
-    <div id="six" class="number">6</div>
-    <div id="seven" class="number">7</div>
-    <div id="eight" class="number">8</div>
-    <div id="nine" class="number">9</div>
-    
-    <div id="add" class="operator">+</div>
-    <div id="subtract" class="operator">-</div>
-    <div id="multiply" class="operator">&times;</div>
-    <div id="divide" class="operator">÷</div>
+  <div id="container">
+    <div id="grid-container">
+      <div id="display" class="display">1231</div>
 
-    <div id="equal">=</div>
-    <div id="clear">AC</div>
-    <div id="decimal">.</div>
-    <div id="openingParenthesis">(</div>
-    <div id="closingParenthesis">)</div>
+      <button id="zero" class="item-b">0</button>
+      <button id="one" class="item-b">1</button>
+      <button id="two" class="item-b">2</button>
+      <button id="three" class="item-b">3</button>
+      <button id="four" class="item-b">4</button>
+      <button id="five" class="item-b">5</button>
+      <button id="six" class="item-b">6</button>
+      <button id="seven" class="item-b">7</button>
+      <button id="eight" class="item-b">8</button>
+      <button id="nine" class="item-b">9</button>
+
+      <button id="decimal" class="item-b">.</button>
+      <button id="equal" class="item-b">=</button>
+  
+      <button id="add" class="item-c">+</button>
+      <button id="subtract" class="item-c">-</button>
+      <button id="multiply" class="item-c">&times;</button>
+      <button id="divide" class="item-c">÷</button>
+
+      <button id="clear" class="item-d">AC</button>
+      <button id="delete" class="item-d">DEL</button>
+      <button id="openingParenthesis" class="item-d">(</button>
+      <button id="closingParenthesis" class="item-d">)</button>
+    </div>
   </div>
 </body>
 </html>
