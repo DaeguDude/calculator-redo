@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  #grid-container {
+    display: grid;
+    border: 1px solid pink;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #grid-container > div {
+    border: 1px solid black;
+  }
+</style>
+<body>
+  <div id="grid-container">
+    <div id="zero" class="number">0</div>
+    <div id="one" class="number">1</div>
+    <div id="two" class="number">2</div>
+    <div id="three" class="number">3</div>
+    <div id="four" class="number">4</div>
+    <div id="five" class="number">5</div>
+    <div id="six" class="number">6</div>
+    <div id="seven" class="number">7</div>
+    <div id="eight" class="number">8</div>
+    <div id="nine" class="number">9</div>
+    
+    <div id="add" class="operator">+</div>
+    <div id="subtract" class="operator">-</div>
+    <div id="multiply" class="operator">&times;</div>
+    <div id="divide" class="operator">÷</div>
+
+    <div id="equal">=</div>
+    <div id="clear">AC</div>
+    <div id="decimal">.</div>
+    <div id="openingParenthesis">(</div>
+    <div id="closingParenthesis">)</div>
+  </div>
+</body>
+</html>

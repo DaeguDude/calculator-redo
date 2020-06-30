@@ -1,0 +1,11 @@
+Create a basic HTML calculator with buttons for each digit,
+each of the above functions and an “Equals”, “Clear”, “dot”,
+“parenthesis”.
+
+✔ Have you decided what to use to make a layout for calculator? @done(20-06-30 10:33)
+Grid, but the problem is I don’t really know well about
+how to set the proper width and align these buttons well 
+using Grid. I have to look up how to align items using Grid. 
+And give it a proper width that I want it to have.
+
+☐ Look up how to align items using Grid
