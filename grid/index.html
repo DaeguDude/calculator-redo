@@ -6,6 +6,13 @@
   <title>Document</title>
 </head>
 <style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+  }
+
   #container {
     height: 100vh;
     display: flex;
@@ -36,7 +43,8 @@
   }
 
   /* All the buttons under grid-container */
-  div[id="grid-container"] > button {
+  #grid-container button {
+    font-size: 16px;
     border-radius: 4px;
   }
 
