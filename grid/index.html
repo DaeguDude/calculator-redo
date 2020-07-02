@@ -18,13 +18,13 @@
     border: 1px solid pink;
 
     /* Define the columns and rows of the grid with the specific size. */
-    grid-template-columns: 100px 100px 100px 100px;
-    grid-template-rows: 150px 100px 100px 100px 100px 100px;
+    grid-template-columns: 80px 80px 80px 80px;
+    grid-template-rows: 100px 50px 50px 50px 50px 50px;
 
     /* Make a gap between grid items. You can think of this as setting the
     width of grid line, thus makes a gap between the items */
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
 
     grid-template-areas:
       "display display display display"
@@ -33,6 +33,11 @@
       "main main main operators"
       "main main main operators"
       "main main main operators"
+  }
+
+  /* All the buttons under grid-container */
+  div[id="grid-container"] > button {
+    border-radius: 4px;
   }
 
   .display {
@@ -49,8 +54,9 @@
     background: #e8eaeb;
   }
 
-  .item-b:active {
-    border-color: #bdc1c6;
+  .item-b:focus {
+    outline: none;
+    border-color: #bdc1c6 ;
   }
 
   /* (,), DEL, AC */
@@ -70,6 +76,13 @@
     background: #d7d9dd;
   }
 
+  /* c - (,), DEL, AC */
+  /* d - +, -, x, ÷ */
+  .item-c:focus,
+  .item-d:focus {
+    outline: none;
+    border-color: #9aa0a6;
+  }
   
 
   
@@ -169,6 +182,7 @@
   }
 
   #equal:focus {
+    outline: none;
     border-color: #185abc;
   }
 

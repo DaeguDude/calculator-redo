@@ -10,20 +10,26 @@ And give it a proper width that I want it to have.
 
 ✔ Look up how to align items using Grid @done(20-06-30 12:33)
 
-☐ How do I give each grid item certain width and height?
+✔ How do I give each grid item certain width and height? @done(20-07-02 20:34)
     grid-template-columns & rows
 
-☐ How do I make a gap in each grid items?
+✔ How do I make a gap in each grid items? @done(20-07-02 20:34)
     column-gap, row-gap
 
 ☐ Change the styles of calculator
-    ☐ Change the background color of each items
-        ☐ numbers = #F1F3F4, hover: #e8eaeb, focus: #bdc1c6 
-        ☐ Equal = #4285F4, hover: #4d8bf1, focus: #185abc
-        ☐ all operators except numbers = #DFE1E5, hover: #d7d9dd, focus: #9aa0a6
+    ✔ Change the background color of each items @done(20-07-02 21:14)
+        ✔ numbers = #F1F3F4, hover: #e8eaeb, focus: #bdc1c6 @done(20-07-02 21:15)
+        ✔ Equal = #4285F4, hover: #4d8bf1, focus: #185abc @done(20-07-02 21:15)
+        ✔ all operators except numbers = #DFE1E5, hover: #d7d9dd, focus: #9aa0a6 @done(20-07-02 21:15)
 
-    Trouble shooting: When the button is focused, why outline is blue?
+    Trouble shooting: When the button is focused, why border-line is blue?
+      It is because there is default outline style by each browsers, and it's blue
+      on mac chrome. Mostly it's default to none, but the button is not. So I have 
+      to change the 'outline: none' and now border-color finally shows up.
+
+
 
     ☐ Change the font size of grid items
-
     ☐ Change the display border round
+
+    Trouble shooting: How do I select all the button elements inside #grid-container?
