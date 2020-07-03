@@ -1,0 +1,11 @@
+6-2 You should round answers so they don't overflow the screen
+
+6-3 Pressing '=' before entering all of the numbers or an
+operator could cause problems!
+
+    - What problems can it cause?
+        - Without any first & second number, if user presses
+        an equal key, it will show NaN
+
+    - I need to check if there are 2 numbers to be operated on
+    when equal key is pressed
