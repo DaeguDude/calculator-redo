@@ -15,6 +15,15 @@ const operators = document.getElementsByClassName("operator");
 // equal element
 const equal = document.getElementById('equal');
 
+// firstNumber
+let firstNum = '';
+
+// currentNumber that has been input by user
+let currentNum = '';
+
+// operator to operate on the numbers
+let operator = '';
+
 
 
 function add(num1, num2) {
@@ -38,7 +47,7 @@ function operate(operator, num1, num2) {
     return add(num1, num2);
   } else if(operator === '-') {
     return subtract(num1, num2);
-  } else if(operator === 'x') {
+  } else if(operator === '×') {
     return multiply(num1, num2);
   } else if(operator === '÷') {
     return divide(num1, num2);
@@ -46,43 +55,46 @@ function operate(operator, num1, num2) {
 }
 
 // Function that will populate the display.
-// It's passed a value, which can be an operator, a number,
-// or anything else
 function populateDisplay(value) {
-
-  // If there's no input yet, replace 0 with a new input
-  if(display.innerHTML === '0') {
     display.innerHTML = value;
-  } else {
-    // If there's already an input, just add the value
-    display.innerHTML = display.innerHTML + value;
-    updateDisplayValue(display.innerHTML);
-  }
 }
 
-// Update Display Value
-function updateDisplayValue(display) {
-  displayValue = display;
-}
+
 
 // Adding event listeners to all number elements
 // If number button is clicked, it will populate the display.
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener('click', (event) => {
+    // Number that has been clicked
     let number = numbers[i].innerHTML;
-    populateDisplay(number);
+    
+    // Current Number that is being inputted
+    currentNum += number;
+
+    // Update Display
+    populateDisplay(currentNum);
   })
 }
 
 // If operator is clicked
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener('click', (event) => {    
+    // Number on the display becomes the first number to be operated on
+    firstNum = Number(display.innerHTML);
+    currentNum = '';
+    operator = operators[i].innerHTML;
   })
 }
 
 // User presses an equal key
 equal.addEventListener('click', (event) => {
+  let answer = operate(operator, firstNum, Number(currentNum));
+  populateDisplay(answer);
 
+  // This makes sure after answer is shown, when user clicks
+  // another number button, it will show the number that
+  // user is inputting not the answer.
+  currentNum = '';
 })
 
 
