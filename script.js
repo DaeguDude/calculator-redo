@@ -89,6 +89,10 @@ for (let i = 0; i < operators.length; i++) {
 // User presses an equal key
 equal.addEventListener('click', (event) => {
   let answer = operate(operator, firstNum, Number(currentNum));
+  // This will round answers with upto 4 decimal point
+  answer = Math.round(answer * 10000) / 10000;
+
+  // Update the answer to the display
   populateDisplay(answer);
 
   // This makes sure after answer is shown, when user clicks
