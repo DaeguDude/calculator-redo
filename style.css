@@ -1,0 +1,206 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#grid-container {
+  display: grid;
+  border: 1px solid pink;
+
+  /* Define the columns and rows of the grid with the specific size. */
+  grid-template-columns: 80px 80px 80px 80px;
+  grid-template-rows: 100px 50px 50px 50px 50px 50px;
+
+  /* Make a gap between grid items. You can think of this as setting the
+  width of grid line, thus makes a gap between the items */
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+
+  grid-template-areas:
+    "display display display display"
+    "top-row top-row top-row top-row"
+    "main main main operators"
+    "main main main operators"
+    "main main main operators"
+    "main main main operators"
+}
+
+/* All the buttons under grid-container */
+#grid-container button {
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.display {
+
+}
+
+/* number, decimal */
+.item-b {
+  grid-area: main;
+  background: #f1f3f4;
+}
+
+.item-b:hover {
+  background: #e8eaeb;
+}
+
+.item-b:focus {
+  outline: none;
+  border-color: #bdc1c6 ;
+}
+
+/* (,), DEL, AC */
+.item-c {
+  grid-area: operators;
+  background: #dfe1e5;
+}
+
+/* +, -, x, ÷ */
+.item-d {
+  grid-area: top-row;
+  background: #dfe1e5
+}
+
+.item-c:hover,
+.item-d:hover {
+  background: #d7d9dd;
+}
+
+/* c - (,), DEL, AC */
+/* d - +, -, x, ÷ */
+.item-c:focus,
+.item-d:focus {
+  outline: none;
+  border-color: #9aa0a6;
+}
+
+
+
+
+#grid-container > div {
+  border: 1px solid black;
+}
+
+#display {
+  grid-column-start: 1;
+  grid-column-end: 5;
+}
+
+#zero {
+  grid-row: 6;
+  grid-column: 1;
+}
+
+#one {
+  grid-row: 5;
+  grid-column: 1;
+}
+
+#two {
+  grid-row: 5;
+  grid-column: 2; 
+}
+
+#three {
+  grid-row: 5;
+  grid-column: 3; 
+}
+
+#four {
+  grid-row: 4;
+  grid-column: 1; 
+}
+
+#five {
+  grid-row: 4;
+  grid-column: 2; 
+}
+
+#six {
+  grid-row: 4;
+  grid-column: 3; 
+}
+
+#seven {
+  grid-row: 3;
+  grid-column: 1; 
+}
+
+#eight {
+  grid-row: 3;
+  grid-column: 2; 
+}
+
+#nine {
+  grid-row: 3;
+  grid-column: 3; 
+}
+
+#add {
+  grid-row: 6;
+  grid-column: 4; 
+}
+
+#subtract {
+  grid-row: 5;
+  grid-column: 4; 
+}
+
+#multiply {
+  grid-row: 4;
+  grid-column: 4; 
+}
+
+#divide {
+  grid-row: 3;
+  grid-column: 4; 
+}
+
+#decimal {
+  grid-row: 6;
+  grid-column: 2; 
+}
+
+#equal {
+  grid-row: 6;
+  grid-column: 3; 
+  background: #4285f4;
+}
+
+#equal:hover {
+  background: #4d8bf1;
+}
+
+#equal:focus {
+  outline: none;
+  border-color: #185abc;
+}
+
+#clear {
+  grid-row: 2;
+  grid-column: 4; 
+}
+
+#delete {
+  grid-row: 2;
+  grid-column: 3; 
+}
+
+#openingParenthesis {
+  grid-row: 2;
+  grid-column: 1; 
+}
+
+#closingParenthesis {
+  grid-row: 2;
+  grid-column: 2;
+}

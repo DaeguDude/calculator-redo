@@ -16,7 +16,7 @@ And give it a proper width that I want it to have.
 ✔ How do I make a gap in each grid items? @done(20-07-02 20:34)
     column-gap, row-gap
 
-☐ Change the styles of calculator
+✔ Change the styles of calculator @done(20-07-03 08:20)
     ✔ Change the background color of each items @done(20-07-02 21:14)
         ✔ numbers = #F1F3F4, hover: #e8eaeb, focus: #bdc1c6 @done(20-07-02 21:15)
         ✔ Equal = #4285F4, hover: #4d8bf1, focus: #185abc @done(20-07-02 21:15)
@@ -27,9 +27,7 @@ And give it a proper width that I want it to have.
       on mac chrome. Mostly it's default to none, but the button is not. So I have 
       to change the 'outline: none' and now border-color finally shows up.
 
+    ✔ Change the font size of grid items @done(20-07-03 08:18)
+    ✔ Change the display border round @done(20-07-03 08:19)
 
-
-    ☐ Change the font size of grid items
-    ☐ Change the display border round
-
-    Trouble shooting: How do I select all the button elements inside #grid-container?
+    
