@@ -27,6 +27,9 @@ let currentNum = '';
 // operator to operate on the numbers
 let operator = '';
 
+// This will let me know if the first number is negative or not
+let isFirstNumNegative = false;
+
 
 
 function add(num1, num2) {
@@ -82,12 +85,37 @@ for (let i = 0; i < numbers.length; i++) {
 // If operator is clicked
 for (let i = 0; i < operators.length; i++) {
   operators[i].addEventListener('click', (event) => {    
-    // Number on the display becomes the first number to be operated on
-    firstNum = Number(display.innerHTML);
-    currentNum = '';
-    operator = operators[i].innerHTML;
-  })
-}
+
+    // When operator is clicked, first check if the clicked operator
+    // is the first input in the calculator without any numbers or operations
+    if(firstNum === 0
+      && currentNum === ''
+      && operator === '') {
+        // And then you need to check if it's '-'
+        if(operators[i].innerHTML === '-') {
+          // First number will become a negative number
+          isFirstNumNegative = true;
+        } 
+    } else {
+      // If it's not your first input, first check your first number
+      // should be a negative number or not
+      if(isFirstNumNegative === true) {
+        // My first number becomes a negative
+        firstNum = Number(display.innerHTML) * -1;
+        // Make it back to false
+        isFirstNumNegative = false;
+      } else {
+        // If yours don't need to be a negative number, just a positive number
+        firstNum = Number(display.innerHTML);
+      }
+      
+      // Ready for a next operation
+      currentNum = '';
+      operator = operators[i].innerHTML;
+      populateDisplay(firstNum);
+    }
+  }) // event listener
+} // for loop
 
 // If user presses 'AC', it removes all the existing data
 // and user starting clean like first setup.
