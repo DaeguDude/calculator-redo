@@ -16,7 +16,7 @@ const operators = document.getElementsByClassName("operator");
 const equal = document.getElementById('equal');
 
 // firstNumber
-let firstNum = '';
+let firstNum = Number(display.innerHTML);
 
 // currentNumber that has been input by user
 let currentNum = '';
@@ -88,17 +88,22 @@ for (let i = 0; i < operators.length; i++) {
 
 // User presses an equal key
 equal.addEventListener('click', (event) => {
-  let answer = operate(operator, firstNum, Number(currentNum));
-  // This will round answers with upto 4 decimal point
-  answer = Math.round(answer * 10000) / 10000;
+  // This means nothing is missing!
+  // 2 numbers and 1 operator
+  if(firstNum != ''
+   && currentNum != ''
+   && operator != '') {
+    let answer = operate(operator, firstNum, Number(currentNum));
+    // This will round answers with upto 4 decimal point
+    answer = Math.round(answer * 10000) / 10000;
 
-  // Update the answer to the display
-  populateDisplay(answer);
+    // Update the answer to the display
+    populateDisplay(answer);
 
-  // This makes sure after answer is shown, when user clicks
-  // another number button, it will show the number that
-  // user is inputting not the answer.
-  currentNum = '';
+    // This makes sure after answer is shown, when user clicks
+    // another number button, they start clean(new numbers).
+    currentNum = '';
+   }
 })
 
 
