@@ -15,6 +15,9 @@ const operators = document.getElementsByClassName("operator");
 // equal element
 const equal = document.getElementById('equal');
 
+// clear element
+const clear = document.getElementById('clear');
+
 // firstNumber
 let firstNum = Number(display.innerHTML);
 
@@ -86,13 +89,24 @@ for (let i = 0; i < operators.length; i++) {
   })
 }
 
+// If user presses 'AC', it removes all the existing data
+// and user starting clean like first setup.
+clear.addEventListener('click', (event) => {
+  // Setting all the values to the starting values.
+  firstNum = 0;
+  currentNum = '';
+  operator = '';
+  
+  populateDisplay(firstNum);
+})
+
 // User presses an equal key
 equal.addEventListener('click', (event) => {
-  // This means nothing is missing!
-  // 2 numbers and 1 operator
-  if(firstNum != ''
-   && currentNum != ''
-   && operator != '') {
+  // This means nothing is missing! 2 numbers and 1 operator
+  // First Number has always value, at least 0, which can be 
+  // replaced with other numbers, so it's omitted here. No need to check
+  // for its emptiness 
+  if(currentNum != '' && operator != '') {
     let answer = operate(operator, firstNum, Number(currentNum));
     // This will round answers with upto 4 decimal point
     answer = Math.round(answer * 10000) / 10000;
