@@ -1,0 +1,4 @@
+// ERROR FIX TODO
+
+When I click the operator, if there's 2 numbers and 1 operator to operate
+on those numbers, it should calculate the values regarding to the operator

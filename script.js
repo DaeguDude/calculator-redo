@@ -65,6 +65,15 @@ function populateDisplay(value) {
     display.innerHTML = value;
 }
 
+// This will make everything clean, makes sure that
+// user starts fresh
+function allClear() {
+  // Setting all the values to the starting values.
+  firstNum = 0;
+  currentNum = '';
+  operator = '';
+}
+
 
 
 // Adding event listeners to all number elements
@@ -120,11 +129,10 @@ for (let i = 0; i < operators.length; i++) {
 // If user presses 'AC', it removes all the existing data
 // and user starting clean like first setup.
 clear.addEventListener('click', (event) => {
-  // Setting all the values to the starting values.
-  firstNum = 0;
-  currentNum = '';
-  operator = '';
-  
+  // First make everything clean
+  allClear();
+
+  // Populate display
   populateDisplay(firstNum);
 })
 
@@ -135,16 +143,24 @@ equal.addEventListener('click', (event) => {
   // replaced with other numbers, so it's omitted here. No need to check
   // for its emptiness 
   if(currentNum != '' && operator != '') {
-    let answer = operate(operator, firstNum, Number(currentNum));
-    // This will round answers with upto 4 decimal point
-    answer = Math.round(answer * 10000) / 10000;
+    // If user is trying to divide by 0
+    if(operator === '÷' && Number(currentNum) === 0) {
+      populateDisplay('Error');
+      // starts fresh
+      allClear();
 
-    // Update the answer to the display
-    populateDisplay(answer);
-
-    // This makes sure after answer is shown, when user clicks
-    // another number button, they start clean(new numbers).
-    currentNum = '';
+    } else {
+      let answer = operate(operator, firstNum, Number(currentNum));
+      // This will round answers with upto 4 decimal point
+      answer = Math.round(answer * 10000) / 10000;
+  
+      // Update the answer to the display
+      populateDisplay(answer);
+  
+      // This makes sure after answer is shown, when user clicks
+      // another number button, they start clean(new numbers).
+      currentNum = '';
+    }
    }
 })
 
