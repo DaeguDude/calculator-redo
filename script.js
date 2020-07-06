@@ -9,6 +9,9 @@ let displayValue = '';
 // All number elements
 const numbers = document.getElementsByClassName("number");
 
+// deciaml element
+const decimal = document.getElementById('decimal');
+
 // Basic Operators
 const operators = document.getElementsByClassName("operator");
 
@@ -87,7 +90,8 @@ for (let i = 0; i < numbers.length; i++) {
     currentNum += number;
 
     // Update Display
-    populateDisplay(currentNum);
+    displayValue = currentNum;
+    populateDisplay(displayValue);
   })
 }
 
@@ -113,7 +117,8 @@ for (let i = 0; i < operators.length; i++) {
       && operator != ''
     ) {
       if(operator === '÷' && Number(currentNum) === 0) {
-        populateDisplay('Error');
+        displayValue = 'Error';
+        populateDisplay(displayValue);
         // starts fresh
         allClear();
   
@@ -123,7 +128,8 @@ for (let i = 0; i < operators.length; i++) {
         answer = Math.round(answer * 10000) / 10000;
     
         // Update the answer to the display
-        populateDisplay(answer);
+        displayValue = answer;
+        populateDisplay(displayValue);
     
         // After showing the answer, first erase all the values
         // first number to calculate is the answer we just calculated
@@ -132,26 +138,57 @@ for (let i = 0; i < operators.length; i++) {
         firstNum = answer;
         operator = operators[i].innerHTML;
       }
+    } else if(
+      firstNum != undefined
+      && operator != ''
+      && currentNum == ''
+    ) {
+      // If there's a first number and an operator in the variable,
+      // but no current number, it means user has clicked operator
+      // two times, thus just replacing the operator
+      operator = operators[i].innerHTML
     } else {
       // If it's not your first input, first check your first number
       // should be a negative number or not
       if(isFirstNumNegative === true) {
         // My first number becomes a negative
-        firstNum = Number(display.innerHTML) * -1;
+        firstNum = Number(displayValue) * -1;
         // Make it back to false for the next operation
         isFirstNumNegative = false;
+        
+        // Update Display
+        displayValue = firstNum;
+        populateDisplay(displayValue);
       } else {
-        // If yours don't need to be a negative number, just a positive number
-        firstNum = Number(display.innerHTML);
+        // Put current number to the firstNum, so ready for next
+        // operation
+        firstNum = Number(currentNum);
       }
       
       // Ready for a next operation
       currentNum = '';
       operator = operators[i].innerHTML;
-      populateDisplay(firstNum);
+
+      // // Update display
+      // displayValue = firstNum;
+      // populateDisplay(displayValue);
     }
   }) // event listener
 } // for loop
+
+// If decimal button is clicked, put the decimal point
+// in the number
+decimal.addEventListener('click', (event) => {
+  // If there's no decimal found, put the decimal point.
+  if(currentNum.indexOf('.') === -1) {
+    currentNum += '.';
+
+    displayValue = currentNum;
+    populateDisplay(displayValue);
+  } // otherwise do nothing
+
+})
+
 
 // If user presses 'AC', it removes all the existing data
 // and user starting clean like first setup.
@@ -160,7 +197,8 @@ clear.addEventListener('click', (event) => {
   allClear();
 
   // Populate display
-  populateDisplay(firstNum);
+  displayValue = firstNum;
+  populateDisplay(displayValue);
 })
 
 // User presses an equal key
@@ -172,17 +210,20 @@ equal.addEventListener('click', (event) => {
   if(currentNum != '' && operator != '') {
     // If user is trying to divide by 0
     if(operator === '÷' && Number(currentNum) === 0) {
-      populateDisplay('Error');
+      displayVale = 'Error';
+      populateDisplay(displayValue);
+      
       // starts fresh
       allClear();
-
     } else {
       let answer = operate(operator, firstNum, Number(currentNum));
       // This will round answers with upto 4 decimal point
       answer = Math.round(answer * 10000) / 10000;
   
       // Update the answer to the display
-      populateDisplay(answer);
+      firstNum = answer;
+      displayValue = answer;
+      populateDisplay(displayValue);
   
       // This makes sure after answer is shown, when user clicks
       // another number button, they start clean(new numbers).
