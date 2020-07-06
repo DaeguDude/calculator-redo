@@ -5,37 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Daegudude's Calculator</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/fadac8530c.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <div id="container">
-    <div id="grid-container">
-      <div id="display" class="display">0</div>
-
-      <button id="zero" class="item-b number">0</button>
-      <button id="one" class="item-b number">1</button>
-      <button id="two" class="item-b number">2</button>
-      <button id="three" class="item-b number">3</button>
-      <button id="four" class="item-b number">4</button>
-      <button id="five" class="item-b number">5</button>
-      <button id="six" class="item-b number">6</button>
-      <button id="seven" class="item-b number">7</button>
-      <button id="eight" class="item-b number">8</button>
-      <button id="nine" class="item-b number">9</button>
-
-      <button id="decimal" class="item-b">.</button>
-      <button id="equal" class="item-b">=</button>
+    <div id="header">
+      <div id="header-title">
+        <div id="header-first-row">Daegudude's Calculator</div>
+        <div id="header-second-row">
+          <a href="https://github.com/DaeguDude">
+            <i class="fab fa-github"></i>
+          </a>
   
-      <button id="add" class="item-c operator">+</button>
-      <button id="subtract" class="item-c operator">-</button>
-      <button id="multiply" class="item-c operator">&times;</button>
-      <button id="divide" class="item-c operator">÷</button>
-
-      <button id="clear" class="item-d">AC</button>
-      <button id="delete" class="item-d">DEL</button>
-      <button id="openingParenthesis" class="item-d">(</button>
-      <button id="closingParenthesis" class="item-d">)</button>
+          <a href="https://twitter.com/Daegudude_Kim">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="mailto:k3hppk@gmail.com">
+            <i class="far fa-envelope"></i>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
+
+    <div id="main">
+    
+      <div id="grid-container">
+        <div id="display" class="display">0</div>
+
+        <button id="zero" class="item-b number">0</button>
+        <button id="one" class="item-b number">1</button>
+        <button id="two" class="item-b number">2</button>
+        <button id="three" class="item-b number">3</button>
+        <button id="four" class="item-b number">4</button>
+        <button id="five" class="item-b number">5</button>
+        <button id="six" class="item-b number">6</button>
+        <button id="seven" class="item-b number">7</button>
+        <button id="eight" class="item-b number">8</button>
+        <button id="nine" class="item-b number">9</button>
+
+        <button id="decimal" class="item-b">.</button>
+        <button id="equal" class="item-b">=</button>
+    
+        <button id="add" class="item-c operator">+</button>
+        <button id="subtract" class="item-c operator">-</button>
+        <button id="multiply" class="item-c operator">&times;</button>
+        <button id="divide" class="item-c operator">÷</button>
+
+        <button id="clear" class="item-d">AC</button>
+        <button id="delete" class="item-d">DEL</button>
+        <button id="openingParenthesis" class="item-d">(</button>
+        <button id="closingParenthesis" class="item-d">)</button>
+      </div> <!-- grid-container -->
+    </div> <!-- main -->
+  </div> <!-- container -->
 </body>
 <script src="script.js"></script>
 </html>

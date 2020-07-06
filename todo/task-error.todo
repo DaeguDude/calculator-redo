@@ -2,3 +2,9 @@
 
 When I click the operator, if there's 2 numbers and 1 operator to operate
 on those numbers, it should calculate the values regarding to the operator
+
+task 6-6-1 when you click the opeartor, if there's already 2 numbers
+and 1 operator put in the those variables, you should just calculate
+it and put the last operator into the operator variable again.
+And the answer should be a first Number to be calculated for the next
+calculation.

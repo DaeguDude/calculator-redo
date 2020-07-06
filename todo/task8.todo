@@ -1,0 +1,28 @@
+Make it look nice!!!
+
+Now, I guess it's time for me to actually make it look nice.
+Final version of the product. But as in agile management, deploy
+early and fix it again and again.
+
+☐ 1. Create a layout that how you want it to look like
+    ☐ header 1.5 - main 8.5
+    ☐ header
+        ✔ min-height @done(20-07-06 12:39)
+        ☐ Font-size
+        ☐ icons alignment
+
+✔ 2. Create a calculator layout that you want it to look like @done(20-07-06 12:06)
+
+
+
+
+3. Get into the little detail of a calculator
+    
+    3.1 When button is clicked change the border color.
+    
+    3.2 Adjust the numbers on the display
+        3.2.1 Make a font-size bigger
+        3.2.2 Make number appear on the bottom-right
+    
+    3.3 Change display layout
+        
