@@ -105,13 +105,40 @@ for (let i = 0; i < operators.length; i++) {
           // First number will become a negative number
           isFirstNumNegative = true;
         } 
+    } else if(
+      // Because there are 2 numbers and 1 operator,
+      // I should do a calculation.
+      firstNum != undefined
+      && currentNum != ''
+      && operator != ''
+    ) {
+      if(operator === '÷' && Number(currentNum) === 0) {
+        populateDisplay('Error');
+        // starts fresh
+        allClear();
+  
+      } else {
+        let answer = operate(operator, firstNum, Number(currentNum));
+        // This will round answers with upto 4 decimal point
+        answer = Math.round(answer * 10000) / 10000;
+    
+        // Update the answer to the display
+        populateDisplay(answer);
+    
+        // After showing the answer, first erase all the values
+        // first number to calculate is the answer we just calculated
+        // And then operator is the operator that was just clicked
+        allClear();
+        firstNum = answer;
+        operator = operators[i].innerHTML;
+      }
     } else {
       // If it's not your first input, first check your first number
       // should be a negative number or not
       if(isFirstNumNegative === true) {
         // My first number becomes a negative
         firstNum = Number(display.innerHTML) * -1;
-        // Make it back to false
+        // Make it back to false for the next operation
         isFirstNumNegative = false;
       } else {
         // If yours don't need to be a negative number, just a positive number
