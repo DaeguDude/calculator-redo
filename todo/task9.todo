@@ -1,0 +1,8 @@
+Add a backspace button!
+
+When user click 'del' button, how will you remove the number
+on the screen? However, what I want is when there's a number
+on the screen and the operator is clicked, it shouldn't
+remove the number on the screen because that number is passed
+to the firstNum to get ready for the operation.
+

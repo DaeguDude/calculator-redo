@@ -24,8 +24,11 @@ const equal = document.getElementById('equal');
 // clear element
 const clear = document.getElementById('clear');
 
+// delete element
+const del = document.getElementById('delete');
+
 // firstNumber
-let firstNum = Number(display.innerHTML);
+let firstNum = Number(numberSection.innerHTML);
 
 // currentNumber that has been input by user
 let currentNum = '';
@@ -113,6 +116,7 @@ for (let i = 0; i < operators.length; i++) {
           // First number will become a negative number
           isFirstNumNegative = true;
         } 
+      populateDisplay(displayValue);  
     } else if(
       // Because there are 2 numbers and 1 operator,
       // I should do a calculation.
@@ -151,6 +155,7 @@ for (let i = 0; i < operators.length; i++) {
       // but no current number, it means user has clicked operator
       // two times, thus just replacing the operator
       operator = operators[i].innerHTML
+      populateDisplay(displayValue);
     } else {
       // If it's not your first input, first check your first number
       // should be a negative number or not
@@ -167,6 +172,7 @@ for (let i = 0; i < operators.length; i++) {
         // Put current number to the firstNum, so ready for next
         // operation
         firstNum = Number(currentNum);
+        populateDisplay(displayValue);
       }
       
       // Ready for a next operation
@@ -189,8 +195,10 @@ decimal.addEventListener('click', (event) => {
 
     displayValue = currentNum;
     populateDisplay(displayValue);
-  } // otherwise do nothing
-
+  } else {
+    // otherwise do nothing
+    populateDisplay(displayValue);
+  }
 })
 
 
@@ -203,6 +211,14 @@ clear.addEventListener('click', (event) => {
   // Populate display
   displayValue = firstNum;
   populateDisplay(displayValue);
+})
+
+// If user presses 'del' button, it will remove the current
+// number being typed. But it wouldn't remove the number
+// that has been passed ready for the operation.
+del.addEventListener('click', (event) => {
+  currentNum = currentNum.slice(0, -1);
+  populateDisplay(currentNum);
 })
 
 // User presses an equal key
@@ -233,7 +249,9 @@ equal.addEventListener('click', (event) => {
       // another number button, they start clean(new numbers).
       currentNum = '';
     }
-   }
+  } else {
+    populateDisplay(displayValue);
+  }
 })
 
 

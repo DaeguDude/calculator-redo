@@ -1,0 +1,5 @@
+When the button is clicked, how do you give the focus to the display?
+
+    element.focus();
+
+
