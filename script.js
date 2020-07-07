@@ -69,6 +69,7 @@ function operate(operator, num1, num2) {
 // Function that will populate the display.
 function populateDisplay(value) {
     numberSection.innerHTML = value;
+    display.focus();
 }
 
 // This will make everything clean, makes sure that
