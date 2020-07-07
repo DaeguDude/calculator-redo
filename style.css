@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+button:focus {
+  outline: none;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
 a {
   /* This will inherit the color of its parent */
   color: inherit;
@@ -21,18 +29,17 @@ a {
   min-height: 100px;
   flex: 1.5 1 0;
 
-  /* display: flex; */
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
-
-
-
-
+i {
+  margin: 10px;
+}
 
 #main {
-  background: burlywood;
   flex: 8.5 1 0;
 
   display: flex;
@@ -41,15 +48,17 @@ a {
 }
 
 #grid-container {
-  background: darkcyan;
   min-height: 500px;
+  min-width: 500px;
 
   display: grid;
-  border: 1px solid pink;
+  padding: 10px;
+  border: 3px solid #ae0000;
+  border-radius: 20px;
 
   /* Define the columns and rows of the grid with the specific size. */
-  grid-template-columns: 80px 80px 80px 80px;
-  grid-template-rows: 100px 50px 50px 50px 50px 50px;
+  grid-template-columns: 125px 125px 125px 125px;
+  grid-template-rows: 150px 70px 70px 70px 70px 70px;
 
   /* Make a gap between grid items. You can think of this as setting the
   width of grid line, thus makes a gap between the items */
@@ -67,12 +76,14 @@ a {
 
 /* All the buttons under grid-container */
 #grid-container button {
-  font-size: 16px;
+  border: none;
+
+  font-size: 20px;
   border-radius: 4px;
 }
 
-.display {
-
+#grid-container button:focus {
+  border: 1px solid #bdc1c6;
 }
 
 /* number, decimal */
@@ -83,11 +94,6 @@ a {
 
 .item-b:hover {
   background: #e8eaeb;
-}
-
-.item-b:focus {
-  outline: none;
-  border-color: #bdc1c6 ;
 }
 
 /* (,), DEL, AC */
@@ -107,24 +113,46 @@ a {
   background: #d7d9dd;
 }
 
-/* c - (,), DEL, AC */
-/* d - +, -, x, ÷ */
-.item-c:focus,
-.item-d:focus {
-  outline: none;
-  border-color: #9aa0a6;
-}
-
-
-
-
-#grid-container > div {
-  border: 1px solid black;
-}
-
 #display {
+  
   grid-column-start: 1;
   grid-column-end: 5;
+
+  border: 1px solid #ebebeb;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+#display:hover {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .1);
+  border: 1px solid #b9b9b9;
+  border-top: 1px solid #a0a0a0;
+}
+
+#display:focus {
+  /* When focused, there's a default outline being applied,
+     So I needed to make sure remove of that */
+  outline: none;
+
+  border: 2px solid rgb(0, 95, 204);
+}
+
+#number-section {
+  /* flex-grow: 1; */
+  height: 72px;
+  line-height: 72px;
+  font-size: 30px;
+  margin-right: 15px;
+  max-width: 97%;
+  
+  overflow: hidden;
+
+  /* This will make when number is overflowing,
+  new number will replace an old number */
+  direction: rtl;
 }
 
 #zero {
@@ -206,33 +234,24 @@ a {
   grid-row: 6;
   grid-column: 3; 
   background: #4285f4;
+  color: white;
 }
 
 #equal:hover {
   background: #4d8bf1;
 }
 
-#equal:focus {
-  outline: none;
-  border-color: #185abc;
+#equal:active {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 1px 1px 3px 0 rgba(66,133,244,.45), -1px -1px 3px 0 rgba(66,133,244,.30)
 }
 
 #clear {
   grid-row: 2;
-  grid-column: 4; 
+  grid-column: 1 / 4; 
 }
 
 #delete {
   grid-row: 2;
-  grid-column: 3; 
-}
-
-#openingParenthesis {
-  grid-row: 2;
-  grid-column: 1; 
-}
-
-#closingParenthesis {
-  grid-row: 2;
-  grid-column: 2;
+  grid-column: 4; 
 }

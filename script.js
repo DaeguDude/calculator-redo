@@ -3,6 +3,9 @@
 // Display Element
 const display = document.getElementById('display');
 
+// number-section element
+const numberSection = document.getElementById('number-section');
+
 // A variable to store the display value
 let displayValue = '';
 
@@ -65,7 +68,7 @@ function operate(operator, num1, num2) {
 
 // Function that will populate the display.
 function populateDisplay(value) {
-    display.innerHTML = value;
+    numberSection.innerHTML = value;
 }
 
 // This will make everything clean, makes sure that

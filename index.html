@@ -6,31 +6,32 @@
   <title>Daegudude's Calculator</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://kit.fontawesome.com/fadac8530c.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="container">
     <div id="header">
-      <div id="header-title">
-        <div id="header-first-row">Daegudude's Calculator</div>
-        <div id="header-second-row">
-          <a href="https://github.com/DaeguDude">
-            <i class="fab fa-github"></i>
-          </a>
-  
-          <a href="https://twitter.com/Daegudude_Kim">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="mailto:k3hppk@gmail.com">
-            <i class="far fa-envelope"></i>
-          </a>
-        </div>
+      <div id="header-first-row"><h1>Daegudude's Calculator</h1></div>
+      <div id="header-second-row">
+        <a href="https://github.com/DaeguDude">
+          <i class="fab fa-github fa-3x"></i>
+        </a>
+
+        <a href="https://twitter.com/Daegudude_Kim">
+          <i class="fab fa-twitter fa-3x"></i>
+        </a>
+        <a href="mailto:k3hppk@gmail.com">
+          <i class="far fa-envelope fa-3x"></i>
+        </a>
       </div>
     </div>
 
     <div id="main">
     
       <div id="grid-container">
-        <div id="display" class="display">0</div>
+        <div tabindex=0 id="display" class="display">
+          <div id="number-section">123</div>
+        </div>
 
         <button id="zero" class="item-b number">0</button>
         <button id="one" class="item-b number">1</button>
@@ -44,7 +45,7 @@
         <button id="nine" class="item-b number">9</button>
 
         <button id="decimal" class="item-b">.</button>
-        <button id="equal" class="item-b">=</button>
+        <button id="equal" class="item-b"><strong>=</strong></button>
     
         <button id="add" class="item-c operator">+</button>
         <button id="subtract" class="item-c operator">-</button>
@@ -53,8 +54,7 @@
 
         <button id="clear" class="item-d">AC</button>
         <button id="delete" class="item-d">DEL</button>
-        <button id="openingParenthesis" class="item-d">(</button>
-        <button id="closingParenthesis" class="item-d">)</button>
+
       </div> <!-- grid-container -->
     </div> <!-- main -->
   </div> <!-- container -->
