@@ -217,8 +217,14 @@ clear.addEventListener('click', (event) => {
 // number being typed. But it wouldn't remove the number
 // that has been passed ready for the operation.
 del.addEventListener('click', (event) => {
-  currentNum = currentNum.slice(0, -1);
-  populateDisplay(currentNum);
+  // if currentNum is not empty, remove the number
+  // on the screen because the number on the screen is a 
+  // currentNum. Otherwise, I don't want it to be removed.
+  if(currentNum != '') {
+    currentNum = currentNum.slice(0, -1);
+    displayValue = currentNum;
+    populateDisplay(displayValue);
+  }
 })
 
 // User presses an equal key
