@@ -84,6 +84,19 @@ function allClear() {
   operator = '';
 }
 
+function checkDisplayFocus() {
+  let isFocused = false;
+  
+  // document.activeElement shows the element that has the focus
+  // within the document
+  if(display === document.activeElement) {
+    isFocused = true;
+  }
+
+  // Return either true or false
+  return isFocused;
+}
+
 
 
 // Adding event listeners to all number elements
@@ -262,7 +275,27 @@ equal.addEventListener('click', (event) => {
 
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
+  const keyAscii = (event.key).charCodeAt();
   console.log(keyName);
+
+  const isNumber = (keyAscii >= 48 && keyAscii <= 57);
+  const isOperator = 
+  (
+   keyName === '+'
+   || keyName === '-'
+   || keyName === '*'
+   || keyName === '/'
+  );
+  const isBackspace = (keyName === 'Backspace');
+  const isEnter = (keyName === 'Enter');
+
+  console.log(`isNumber: ${isNumber}`);
+  console.log(`isOperator: ${isOperator}`);
+  console.log(`isBackspace: ${isBackspace}`);
+  console.log(`isEnter: ${isEnter}`);
+
+  if(checkDisplayFocus() === true) {
+  }
 }) 
 
 
