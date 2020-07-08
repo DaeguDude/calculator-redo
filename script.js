@@ -260,5 +260,11 @@ equal.addEventListener('click', (event) => {
   }
 })
 
+document.addEventListener('keydown', (event) => {
+  const keyName = event.key;
+  console.log(keyName);
+}) 
+
+
 
 
