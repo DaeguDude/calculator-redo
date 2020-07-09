@@ -19,6 +19,19 @@ needs to show some effect to prove that they are actually being processed otherw
             or padding
             - Different Color than Yellow
 
+    1. Need to keep the calculator ratio even if it gets smaller,
+    just size changes
+        - Figure out calculator ratio and size
+        - Display & number section size
+        - button size
+            - grid-template -columns
+            - grid-template-rows
+
+    2. Header size
+        - header text, icons need to have some margin on padding
+        to be in the middle whole time
+        - different header color
+
 4. Calculation Logic Error
     - When media query is applied...
         - Number se
