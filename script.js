@@ -97,151 +97,109 @@ function checkDisplayFocus() {
   return isFocused;
 }
 
+function executeNumber(num) {  
+  /** Take a number as an argument, and put that
+    * on the variable 'currentNum', which will be passed
+    * on to the displayValue and populate the display
+    */ 
 
+  // Current Number that is being inputted
+  currentNum += num;
 
-// Adding event listeners to all number elements
-// If number button is clicked, it will populate the display.
-for (let i = 0; i < numbers.length; i++) {
-  numbers[i].addEventListener('click', (event) => {
-    // Number that has been clicked
-    let number = numbers[i].innerHTML;
-    
-    // Current Number that is being inputted
-    currentNum += number;
-
-    // Update Display
-    displayValue = currentNum;
-    populateDisplay(displayValue);
-  })
+  // Update Display
+  displayValue = currentNum;
+  populateDisplay(displayValue);
 }
 
-// If operator is clicked
-for (let i = 0; i < operators.length; i++) {
-  operators[i].addEventListener('click', (event) => {    
-
-    // When operator is clicked, first check if the clicked operator
-    // is the first input in the calculator without any numbers or operations
-    if(firstNum === 0
-      && currentNum === ''
-      && operator === '') {
-        // And then you need to check if it's '-'
-        if(operators[i].innerHTML === '-') {
-          // First number will become a negative number
-          isFirstNumNegative = true;
-        } 
-      populateDisplay(displayValue);  
-    } else if(
-      // Because there are 2 numbers and 1 operator,
-      // I should do a calculation.
-      firstNum != undefined
-      && currentNum != ''
-      && operator != ''
-    ) {
-      if(operator === '÷' && Number(currentNum) === 0) {
-        displayValue = 'Error';
-        populateDisplay(displayValue);
-        // starts fresh
-        allClear();
-  
-      } else {
-        let answer = operate(operator, firstNum, Number(currentNum));
-        // This will round answers with upto 4 decimal point
-        answer = Math.round(answer * 10000) / 10000;
-    
-        // Update the answer to the display
-        displayValue = answer;
-        populateDisplay(displayValue);
-    
-        // After showing the answer, first erase all the values
-        // first number to calculate is the answer we just calculated
-        // And then operator is the operator that was just clicked
-        allClear();
-        firstNum = answer;
-        operator = operators[i].innerHTML;
-      }
-    } else if(
-      firstNum != undefined
-      && operator != ''
-      && currentNum == ''
-    ) {
-      // If there's a first number and an operator in the variable,
-      // but no current number, it means user has clicked operator
-      // two times, thus just replacing the operator
-      operator = operators[i].innerHTML
+function executeOperator(basicOperator) {
+  // When operator is clicked, first check if the clicked operator
+  // is the first input in the calculator without any numbers or operations
+  if(firstNum === 0
+    && currentNum === ''
+    && operator === '') {
+      // And then you need to check if it's '-'
+      if(basicOperator === '-') {
+        // First number will become a negative number
+        isFirstNumNegative = true;
+      } 
+    populateDisplay(displayValue);  
+  } else if(
+    // Because there are 2 numbers and 1 operator,
+    // I should do a calculation.
+    firstNum != undefined
+    && currentNum != ''
+    && operator != ''
+  ) {
+    if(operator === '÷' && Number(currentNum) === 0) {
+      displayValue = 'Error';
       populateDisplay(displayValue);
+      // starts fresh
+      allClear();
+
     } else {
-      // If it's not your first input, first check your first number
-      // should be a negative number or not
-      if(isFirstNumNegative === true) {
-        // My first number becomes a negative
-        firstNum = Number(displayValue) * -1;
-        // Make it back to false for the next operation
-        isFirstNumNegative = false;
-        
-        // Update Display
-        displayValue = firstNum;
-        populateDisplay(displayValue);
-      } else {
-        // Put current number to the firstNum, so ready for next
-        // operation
-        firstNum = Number(currentNum);
-        populateDisplay(displayValue);
-      }
-      
-      // Ready for a next operation
-      currentNum = '';
-      operator = operators[i].innerHTML;
-
-      // // Update display
-      // displayValue = firstNum;
-      // populateDisplay(displayValue);
+      let answer = operate(operator, firstNum, Number(currentNum));
+      // This will round answers with upto 4 decimal point
+      answer = Math.round(answer * 10000) / 10000;
+  
+      // Update the answer to the display
+      displayValue = answer;
+      populateDisplay(displayValue);
+  
+      // After showing the answer, first erase all the values
+      // first number to calculate is the answer we just calculated
+      // And then operator is the operator that was just clicked
+      allClear();
+      firstNum = answer;
+      operator = basicOperator;
     }
-  }) // event listener
-} // for loop
-
-// If decimal button is clicked, put the decimal point
-// in the number
-decimal.addEventListener('click', (event) => {
-  // If there's no decimal found, put the decimal point.
-  if(currentNum.indexOf('.') === -1) {
-    currentNum += '.';
-
-    displayValue = currentNum;
+  } else if(
+    firstNum != undefined
+    && operator != ''
+    && currentNum == ''
+  ) {
+    // If there's a first number and an operator in the variable,
+    // but no current number, it means user has clicked operator
+    // two times, thus just replacing the operator
+    operator = basicOperator
     populateDisplay(displayValue);
   } else {
-    // otherwise do nothing
-    populateDisplay(displayValue);
+    // If it's not your first input, first check your first number
+    // should be a negative number or not
+    if(isFirstNumNegative === true) {
+      // My first number becomes a negative
+      firstNum = Number(displayValue) * -1;
+      // Make it back to false for the next operation
+      isFirstNumNegative = false;
+      
+      // Update Display
+      displayValue = firstNum;
+      populateDisplay(displayValue);
+    } else {
+      // Put current number to the firstNum, so ready for next
+      // operation
+      firstNum = Number(currentNum);
+      populateDisplay(displayValue);
+    }
+    
+    // Ready for a next operation
+    currentNum = '';
+    operator = basicOperator;
+
+    // // Update display
+    // displayValue = firstNum;
+    // populateDisplay(displayValue);
   }
-})
+}
 
-
-// If user presses 'AC', it removes all the existing data
-// and user starting clean like first setup.
-clear.addEventListener('click', (event) => {
-  // First make everything clean
-  allClear();
-
-  // Populate display
-  displayValue = firstNum;
-  populateDisplay(displayValue);
-})
-
-// If user presses 'del' button, it will remove the current
-// number being typed. But it wouldn't remove the number
-// that has been passed ready for the operation.
-del.addEventListener('click', (event) => {
-  // if currentNum is not empty, remove the number
-  // on the screen because the number on the screen is a 
-  // currentNum. Otherwise, I don't want it to be removed.
+function executeDelete() {
   if(currentNum != '') {
     currentNum = currentNum.slice(0, -1);
     displayValue = currentNum;
     populateDisplay(displayValue);
   }
-})
+}
 
-// User presses an equal key
-equal.addEventListener('click', (event) => {
+function executeEqual() {
   // This means nothing is missing! 2 numbers and 1 operator
   // First Number has always value, at least 0, which can be 
   // replaced with other numbers, so it's omitted here. No need to check
@@ -271,30 +229,116 @@ equal.addEventListener('click', (event) => {
   } else {
     populateDisplay(displayValue);
   }
+}
+
+function executeDecimal() {
+  // If there's no decimal found, put the decimal point.
+  if(currentNum.indexOf('.') === -1) {
+    currentNum += '.';
+
+    displayValue = currentNum;
+    populateDisplay(displayValue);
+  } else {
+    // otherwise do nothing
+    populateDisplay(displayValue);
+  }
+}
+
+
+
+
+// Adding event listeners to all number elements
+// If number button is clicked, it will populate the display.
+for (let i = 0; i < numbers.length; i++) {
+  numbers[i].addEventListener('click', (event) => {
+    let number = numbers[i].innerHTML;
+    executeNumber(number);
+  })
+}
+
+// If operator is clicked
+for (let i = 0; i < operators.length; i++) {
+  operators[i].addEventListener('click', (event) => {    
+    let currentOperator = operators[i].innerHTML;
+    executeOperator(currentOperator);
+    
+  }) // event listener
+} // for loop
+
+// If decimal button is clicked, put the decimal point
+// in the number
+decimal.addEventListener('click', (event) => {
+  executeDecimal();
+})
+
+
+// If user presses 'AC', it removes all the existing data
+// and user starting clean like first setup.
+clear.addEventListener('click', (event) => {
+  // First make everything clean
+  allClear();
+
+  // Populate display
+  displayValue = firstNum;
+  populateDisplay(displayValue);
+})
+
+// If user presses 'del' button, it will remove the current
+// number being typed. But it wouldn't remove the number
+// that has been passed ready for the operation.
+del.addEventListener('click', (event) => {
+  executeDelete();
+})
+
+// User presses an equal key
+equal.addEventListener('click', (event) => {
+  executeEqual();
 })
 
 document.addEventListener('keydown', (event) => {
-  const keyName = event.key;
+  let keyName = event.key;
   const keyAscii = (event.key).charCodeAt();
-  console.log(keyName);
 
   const isNumber = (keyAscii >= 48 && keyAscii <= 57);
-  const isOperator = 
-  (
-   keyName === '+'
-   || keyName === '-'
-   || keyName === '*'
-   || keyName === '/'
+  
+  const isOperator = (
+    keyName === '+'
+    || keyName === '-'
+    || keyName === '*'
+    || keyName === '/'
   );
+
+  /** Because the multiply and division character is ×, ÷ in the 
+   * function 'operate' we need to change the passed value of '*', '/'
+   * to '×', '÷' to make function 'operate' work.
+   */
+  if(isOperator === true) {
+    if(keyName === '*') {
+      keyName = '×';
+    }
+    if(keyName === '/') {
+      keyName = '÷';
+    }
+  }
+
+  const isDecimal = (keyName === '.');
   const isBackspace = (keyName === 'Backspace');
   const isEnter = (keyName === 'Enter');
 
-  console.log(`isNumber: ${isNumber}`);
-  console.log(`isOperator: ${isOperator}`);
-  console.log(`isBackspace: ${isBackspace}`);
-  console.log(`isEnter: ${isEnter}`);
-
   if(checkDisplayFocus() === true) {
+    if(isNumber) {
+      let number = keyName;
+      executeNumber(number);
+    } else if(isOperator) {
+      let operator = keyName;
+      executeOperator(operator);
+    } else if(isDecimal) {
+      executeDecimal();
+    } else if(isBackspace) {
+      executeDelete();
+    } else if(isEnter) {
+      executeEqual();
+    }
   }
 }) 
 
