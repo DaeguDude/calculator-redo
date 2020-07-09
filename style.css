@@ -25,8 +25,10 @@ a {
 }
 
 #header {
-  background: yellow;
+  background: #3d515c;
+  color: #ebedee;
   min-height: 100px;
+  padding: 10px;
   flex: 1.5 1 0;
 
   display: flex;
@@ -35,7 +37,9 @@ a {
   align-items: center;
 }
 
-i {
+.fab,
+.far {
+  font-size: 3em;
   margin: 10px;
 }
 
@@ -45,6 +49,8 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 30px;
 }
 
 #grid-container {
@@ -254,4 +260,27 @@ i {
 #delete {
   grid-row: 2;
   grid-column: 4; 
+}
+
+@media only screen and (max-height: 800px) {
+  /* Change the calculator size */
+  #grid-container {
+    min-width: 300px;
+    min-height: 300px;
+
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: 85.7px repeat(5, 42.85px);
+  }
+
+  /* change the size of header title */
+  #header-first-row h1 {
+    font-size: 1.5em;
+  }
+
+  .fab,
+  .far {
+    font-size: 2em;
+    margin: 3px;
+  }
+
 }

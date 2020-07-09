@@ -83,7 +83,11 @@ function populateDisplay(value) {
    * if the text is overflowing, change the text direction to make
    * new numbers to push old numbers
    */ 
-  if(currentNum.length >= 29) {
+  let displayWidth = display.clientWidth;
+  let numberSectionWidth = numberSection.clientWidth;
+  let isTextOverflowing = (displayWidth - 25 <= numberSectionWidth);
+
+  if(isTextOverflowing === true) {
     numberSection.style.direction = 'rtl';
   } else {
     numberSection.style.direction = 'ltr';
@@ -223,7 +227,7 @@ function executeEqual() {
   if(currentNum != '' && operator != '') {
     // If user is trying to divide by 0
     if(operator === '÷' && Number(currentNum) === 0) {
-      displayVale = 'Error';
+      displayValue = 'Error';
       populateDisplay(displayValue);
       
       // starts fresh
@@ -241,6 +245,7 @@ function executeEqual() {
       // This makes sure after answer is shown, when user clicks
       // another number button, they start clean(new numbers).
       currentNum = '';
+      
     }
   } else {
     populateDisplay(displayValue);
