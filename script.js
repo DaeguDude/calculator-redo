@@ -272,6 +272,7 @@ function executeDecimal() {
 // If number button is clicked, it will populate the display.
 for (let i = 0; i < numbers.length; i++) {
   numbers[i].addEventListener('click', (event) => {
+    console.log(numbers[i])
     let number = numbers[i].innerHTML;
     executeNumber(number);
   })
