@@ -71,8 +71,24 @@ function operate(operator, num1, num2) {
 
 // Function that will populate the display.
 function populateDisplay(value) {
-    numberSection.innerHTML = value;
+  numberSection.innerHTML = value;
+  
+  // To show some sort of effect to indicate it is being processed.
+  display.blur() 
+  setTimeout(function() {
     display.focus();
+  }, 50);
+
+  /**
+   * if the text is overflowing, change the text direction to make
+   * new numbers to push old numbers
+   */ 
+  if(currentNum.length >= 29) {
+    numberSection.style.direction = 'rtl';
+  } else {
+    numberSection.style.direction = 'ltr';
+  }
+  
 }
 
 // This will make everything clean, makes sure that

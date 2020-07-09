@@ -152,7 +152,7 @@ i {
 
   /* This will make when number is overflowing,
   new number will replace an old number */
-  direction: rtl;
+  /* direction: rtl; */
 }
 
 #zero {
