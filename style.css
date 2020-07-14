@@ -262,11 +262,11 @@ a {
   grid-column: 4; 
 }
 
-@media only screen and (max-height: 800px) {
+@media screen and (max-height: 800px) {
   /* Change the calculator size */
   #grid-container {
     min-width: 300px;
-    min-height: 300px;
+    min-height: 350px;
 
     grid-template-columns: repeat(4, 75px);
     grid-template-rows: 85.7px repeat(5, 42.85px);
@@ -282,5 +282,37 @@ a {
     font-size: 2em;
     margin: 3px;
   }
+}
 
+/* Mobile Devices */
+@media screen and (max-width: 630px) {
+  /* Change the calculator size */
+  #grid-container {
+    min-width: 300px;
+    min-height: 315px;
+
+    grid-template-columns: repeat(4, 66.25px);
+    grid-template-rows: 85.7px repeat(5, 42.85px);
+  }
+
+  /* change the size of header title */
+  #header-first-row h1 {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  #header-second-row {
+    min-width: 300px;
+    text-align: center;
+  }
+
+  #header-first-row {
+    min-width: 300px;
+  }
+
+  .fab,
+  .far {
+    margin: 3px;
+    font-size: 2em;
+  }
 }
